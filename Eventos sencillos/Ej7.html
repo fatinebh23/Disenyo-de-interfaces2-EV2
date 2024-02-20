@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<head>
+  <style>
+    div, button, p {
+      width: 150px;
+      height: 50px;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #e91010;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+    <!-- Haz lo mismo para todos los eventos táctiles. -->
+  <div id="miDiv" ontouchstart="mostrarAlerta('Toque empezado en el div')" ontouchend="mostrarAlerta('Toque finalizado en el div')" ontouchmove="mostrarAlerta('Toque movido en el div')" ontouchcancel="mostrarAlerta('Toque cancelado en el div')">Div</div>
+
+  <button id="miBoton" ontouchstart="mostrarAlerta('Toque empezado en el botón')" ontouchend="mostrarAlerta('Toque finalizado en el botón')">Botón</button>
+
+  <p id="miParrafo" ontouchstart="mostrarAlerta('Toque empezado en el párrafo')" ontouchend="mostrarAlerta('Toque finalizado en el párrafo')" ontouchmove="mostrarAlerta('Toque movido en el párrafo')" ontouchcancel="mostrarAlerta('Toque cancelado en el párrafo')">Párrafo</p>
+
+  <script>
+    function mostrarAlerta(mensaje) {
+      alert(mensaje);
+    }
+  </script>
+</body>
+</html>
+

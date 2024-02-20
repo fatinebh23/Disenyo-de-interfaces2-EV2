@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div { 
+            width: 100px; 
+            height: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- En esta página tienes tres bloques: uno de color rojo otro de color blanco y otro de color azul.
+     Crea un script para que cuando el ratón se mueve desde el bloque rojo al central aparezca un mensaje indicándolo (alert).
+     Si se mueve desde el azul al central, otro mensaje distinto indicándolo. Y si entra en el bloque desde otro sitio aparezca un tercer mensaje. -->
+
+   <div id="rojo" style="background: red"></div>
+   <div id="blanco" style="background: white"></div>
+   <div id="azul" style="background: blue"></div>
+
+   <script>
+       var bloqueRojo = document.getElementById('rojo');
+       var bloqueBlanco = document.getElementById('blanco');
+       var bloqueAzul = document.getElementById('azul');
+
+    
+       function mensajeEntradaRojo() {
+           alert('Entró desde el bloque rojo');
+       }
+
+       function mensajeEntradaAzul() {
+           alert('Entró desde el bloque azul');
+       }
+
+       function mensajeEntradaOtro() {
+           alert('Entró desde otro lugar');
+       }
+
+    //    El evento mouseover es un evento de ratón en JavaScript que se dispara cuando el puntero del ratón entra en el área de un elemento.
+    //     En el ejemplo que proporcioné, se utilizó mouseover para detectar cuándo el ratón se mueve sobre los bloques HTML.
+
+       bloqueRojo.addEventListener('mouseover', mensajeEntradaRojo);
+       bloqueBlanco.addEventListener('mouseover', mensajeEntradaOtro);
+       bloqueAzul.addEventListener('mouseover', mensajeEntradaAzul);
+   </script>
+</body>
+</html>

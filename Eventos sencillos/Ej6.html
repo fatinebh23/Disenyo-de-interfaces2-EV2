@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<head>
+  <style>
+    div, button, p {
+      width: 150px;
+      height: 50px;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #d12323;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+    <!-- Crea una página web con algunos elementos y gestiona todos los eventos de ratón posibles para alguno de ellos mostrando ventanas con alert. -->
+
+    
+  <div id="miDiv" onmouseover="mostrarAlerta('Mouse over en el div')" onmouseout="mostrarAlerta('Mouse out en el div')" onclick="mostrarAlerta('Click en el div')">Div</div>
+
+  <button id="miBoton" onmousedown="mostrarAlerta('Mouse down en el botón')" onmouseup="mostrarAlerta('Mouse up en el botón')">Botón</button>
+
+  <p id="miParrafo" onmousemove="mostrarAlerta('Mouse move en el párrafo')" ondblclick="mostrarAlerta('Doble click en el párrafo')">Párrafo</p>
+
+  <script>
+    function mostrarAlerta(mensaje) {
+      alert(mensaje);
+    }
+  </script>
+</body>
+</html>

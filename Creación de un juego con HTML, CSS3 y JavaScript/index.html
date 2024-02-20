@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Space Stars">
+    <meta name="description" content="Juego en HTML%">
+    <meta name="keywords" content="space,stars,juego,html5,css,javascript">
+    <meta name="author" content="Jairo García Rincón">
+    <meta name="url" content="">
+    <title>Llega a Casa | Fatine Bouhrich</title>
+
+    <!-- CSS -->
+    <link href="style.css" rel="stylesheet">
+
+    <!-- JS -->
+    <script src="script.js" defer></script>
+</head>
+<body onload="canvasStars()">
+    <div>
+        <h1>LLEGA A TU CASA!!</h1>
+        <span id="mensaje" onclick="reiniciar()">Intenta llegar a tu casa eviatndo los arboles y sin agotar los puntos.</span><br>
+        Puntuación: <span id="puntuacion">40</span><br>
+        Tiempo: <span id="tiempo">00:30</span>
+    </div>
+    <canvas id="miCanvas" width="800" height="800"></canvas>
+
+    <div >
+        <button id="find-me" onclick="geoFindMe()">Show my location</button><br />
+        <p id="status"></p>
+        <a id="map-link" target="_blank" style="color: white;"></a>
+    
+      </div>
+</body>
+</html>
+</html>
