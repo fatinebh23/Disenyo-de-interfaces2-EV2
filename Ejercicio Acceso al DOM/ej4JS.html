@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .image {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .hidden {
+            opacity: 0.1;
+        }
+    </style>
+    <title>Mostrar y Ocultar Imágenes</title>
+</head>
+<body>
+    <!-- 4. Crea dos botones:
+    - Mostrar
+    - Ocultar
+
+Debajo añade un bloque con 8-10 imágenes pequeñas (80-150px) las cuales al
+pulsar sobre mostrar apareceran una tras otra con un delay de 1 segundo.
+
+Si pulsamos sobre el botón de ocultar quedarán con muy poca opacidad (0.1) que
+se perciban que existen pero además se tiene que notar que se ocultaron.
+
+Al pulsar sobre una imagen concreta, esta se ocultará igualmente con una
+opacidad sobre 0.1 en escala de 1 (un 10% de opacidad). -->
+    <button onclick="mostrar()">Mostrar</button>
+    <button onclick="ocultar()">Ocultar</button>
+
+    <div class="image-container">
+        <img class="image" src="foto1.jpg" onclick="ocultarImagen(this)">
+        <img class="image" src="foto2.jpg" onclick="ocultarImagen(this)">
+        <img class="image" src="foto3.jpg" onclick="ocultarImagen(this)">
+        <!-- Agrega más imágenes según sea necesario -->
+    </div>
+
+    <script>
+        function mostrar() {
+            var images = document.querySelectorAll('.image');
+            images.forEach((image, index) => {
+                setTimeout(() => {
+                    image.style.opacity = 1;
+                }, (index + 1) * 1000);
+            });
+        }
+
+        function ocultar() {
+            var images = document.querySelectorAll('.image');
+            images.forEach(image => {
+                image.style.opacity = 0.1;
+            });
+        }
+
+        function ocultarImagen(img) {
+            img.style.opacity = 0.1;
+        }
+    </script>
+</body>
+</html>

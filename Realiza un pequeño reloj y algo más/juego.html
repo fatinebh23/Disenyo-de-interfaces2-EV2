@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>! NO TE TOQUES LOS OBSTACULOS!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            overflow: hidden;
+            background-image: url(fondo_blanco_estudio.jpg);
+        }
+
+        #player {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(17, 17, 22);
+            position: absolute;
+        }
+
+        .obstacle {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(145, 71, 206);
+            position: absolute;
+        }
+
+        #leftBtn, #rightBtn {
+            font-size: 1em;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>! NO TE TOQUES LOS OBSTACULOS!</h1>
+
+    <button id="leftBtn" onclick="movePlayer('left')">Izquierda</button>
+    <button id="rightBtn" onclick="movePlayer('right')">Derecha</button>
+    
+    <div id="player"></div>
+
+    <script>
+        const player = document.getElementById('player');
+        let positionX = window.innerWidth / 2 - 25; 
+        let positionY = 0;
+        let velocityY = 1;
+        let velocityX = 0;
+        let isGameOver = false;
+        let score = 0;
+
+        function createObstacle() {
+            const obstacle = document.createElement('div');
+            obstacle.className = 'obstacle';
+            obstacle.style.left = Math.floor(Math.random() * (window.innerWidth - 50)) + 'px';
+            obstacle.style.top = '-50px';
+            document.body.appendChild(obstacle);
+
+            return obstacle;
+        }
+
+        function updateGame() {
+            if (!isGameOver) {
+                positionY += velocityY;
+                positionX += velocityX;
+
+                player.style.top = positionY + 'px';
+                player.style.left = positionX + 'px';
+
+                // Crear obstáculos aleatorios
+                if (Math.random() < 0.02) {
+                    const obstacle = createObstacle();
+
+                    const obstacleAnimation = setInterval(() => {
+                        if (!isGameOver) {
+                            obstacle.style.top = (parseInt(obstacle.style.top) + 5) + 'px';
+
+                            if (checkCollision(player, obstacle)) {
+                                gameOver();
+                                clearInterval(obstacleAnimation);
+                            }
+
+                        
+                            if (parseInt(obstacle.style.top) > window.innerHeight) {
+                                document.body.removeChild(obstacle);
+                                score++;
+                            }
+                        } else {
+                            clearInterval(obstacleAnimation);
+                        }
+                    }, 20);
+                }
+
+              
+                if (positionX < 0) {
+                    positionX = 0;
+                } else if (positionX + player.clientWidth > window.innerWidth) {
+                    positionX = window.innerWidth - player.clientWidth;
+                }
+
+                //  el jugador ha llegado al fondo???
+                if (positionY + player.clientHeight >= window.innerHeight) {
+                    gameOver();
+                }
+
+                requestAnimationFrame(updateGame);
+            }
+        }
+
+        function checkCollision(player, obstacle) {
+            const playerRect = player.getBoundingClientRect();
+            const obstacleRect = obstacle.getBoundingClientRect();
+
+            return (
+                playerRect.left < obstacleRect.right &&
+                playerRect.right > obstacleRect.left &&
+                playerRect.top < obstacleRect.bottom &&
+                playerRect.bottom > obstacleRect.top
+            );
+        }
+
+        function gameOver() {
+            isGameOver = true;
+            alert(`¡Game Over! Puntuación: ${score}`);
+        }
+
+        function movePlayer(direction) {
+            if (!isGameOver) {
+                const step = 20;
+                if (direction === 'left') {
+                    velocityX = -step;
+                } else if (direction === 'right') {
+                    velocityX = step;
+                }
+            }
+        }
+
+
+       
+        updateGame();
+
+        // Agregar un evento de clic para reiniciar el juego
+        document.addEventListener('click', () => {
+            if (isGameOver) {
+                
+                positionX = window.innerWidth / 2 - 25; 
+                positionY = 0;
+                velocityY = 1;
+                velocityX = 0;
+                isGameOver = false;
+                score = 0;
+
+              
+                player.style.top = positionY + 'px';
+                player.style.left = positionX + 'px';
+
+                // Eliminar  los obstáculos 
+                const obstacles = document.querySelectorAll('.obstacle');
+                obstacles.forEach(obstacle => document.body.removeChild(obstacle));
+
+                
+                updateGame();
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+

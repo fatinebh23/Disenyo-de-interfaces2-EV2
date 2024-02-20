@@ -1,0 +1,24 @@
+div{
+    width: 590px;
+    background-color: rgb(86, 98, 133);
+    color: white;
+    margin-bottom: 2px;
+    padding: 5px;
+    text-align: center;
+}
+h1{
+    margin: 0;
+}
+#mensaje{
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#puntuacion,
+#tiempo{
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Arial", sans-serif;
+    color: rgb(0, 255, 221);
+}
+

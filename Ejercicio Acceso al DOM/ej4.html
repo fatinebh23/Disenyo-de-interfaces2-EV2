@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mostrar y Ocultar Imágenes</title>
+  <style>
+    .image-container {
+      display: none;
+      text-align: center;
+    }
+
+    img {
+      max-width: 150px;
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="mostrarBtn">Mostrar</button>
+  <button id="ocultarBtn">Ocultar</button>
+
+  <div class="image-container">
+    <img src="foto1.jpg" alt="Imagen 1" class="image">
+    <img src="foto2.jpg" alt="Imagen 2" class="image">
+    <!-- Agrega más imágenes según sea necesario -->
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      var images = $('.image');
+
+      $('#mostrarBtn').on('click', function () {
+        images.each(function (index) {
+          var image = $(this);
+          setTimeout(function () {
+            image.show().css('opacity', 1);
+          }, 1000 * index);
+        });
+      });
+
+      $('#ocultarBtn').on('click', function () {
+        images.css('opacity', 0.1);
+      });
+
+      $('.image').on('click', function () {
+        $(this).css('opacity', 0.1);
+      });
+    });
+  </script>
+</body>
+</html>

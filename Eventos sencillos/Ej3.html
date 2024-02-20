@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+   
+</head>
+<body>
+    <!-- Crea una función de JavaScript para generar el alert anterior. Haz que una única función nos sirva tanto para div como para button. -->
+<button onclick="mostrarAlerta(this)">Pulsa aquí (botón)</button>
+<div onclick="mostrarAlerta(this)">Pulsa aquí (div)</div>
+
+<script>
+    function mostrarAlerta(elemento) {
+        alert("Pulsaste sobre el " + (elemento.tagName.toLowerCase() === 'button' ? 'botón' : 'div'));
+    }
+</script>
+
+</body>
+</html>
